@@ -2,7 +2,6 @@ const ytdl = require("ytdl-core");
 const fs = require("fs");
 const ffmpeg = require('fluent-ffmpeg');
 const readline = require('readline');
-const { title } = require("process");
 
 
 const rl = readline.createInterface({
@@ -41,6 +40,7 @@ async function convertToAudio(YTvideoURL, videoFilePath) {
     let autore = "";
 
     await ytdl.getInfo(YTvideoURL).then((info) => {
+        console.log("> recupero titolo e autore del video...")
         titolo = info.videoDetails.title;
         autore = info.videoDetails.author.name;
     });
