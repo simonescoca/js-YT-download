@@ -1,23 +1,20 @@
 const ytdl = require("ytdl-core");
 const fs = require("fs");
-const ffmpeg = require('fluent-ffmpeg');
-const readline = require('readline');
+const ffmpeg = require("fluent-ffmpeg");
+const cInput = require("./simo_modules/c-input");
 
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+cInput("YT Download Video - Inserisci l\'URL")
+    .then((YTvideoURL) => {
+        if (YTvideoURL.startsWith("https://www.youtube.com/watch")) {
+            downloadVideo(YTvideoURL);
+    
+        } else console.log("URL non valido")
+    })
+    .catch((err) => {
+        console.log(err.message)
+    });
 
-rl.question('YT Download Video - Inserisci l\'URL > ', (YTvideoURL) => {
-        
-    if (YTvideoURL.startsWith("https://www.youtube.com/watch")) {
-        downloadVideo(YTvideoURL);
-
-    } else console.log("URL non valido")
-
-    rl.close();
-});
 
 function downloadVideo(YTvideoURL) {
     console.log("> download del video in corso...")
@@ -33,6 +30,7 @@ function downloadVideo(YTvideoURL) {
             convertToAudio(YTvideoURL, videoFilePath);
         });
 }
+
 
 async function convertToAudio(YTvideoURL, videoFilePath) {
     console.log("> conversione a file audio.mp3 in corso...")
