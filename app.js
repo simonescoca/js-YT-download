@@ -4,7 +4,7 @@ const ffmpeg = require("fluent-ffmpeg");
 const cInput = require("./simo_modules/c-input");
 
 
-cInput("YT Download Video - Inserisci l\'URL")
+cInput("YT Download Video - Inserisci l'URL")
     .then((YTvideoURL) => {
         if (YTvideoURL.startsWith("https://www.youtube.com/watch")) {
             downloadVideo(YTvideoURL);
