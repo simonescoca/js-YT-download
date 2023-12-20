@@ -24,7 +24,7 @@ async function getInfos() {
                 console.log("> URL non valido");
             }
         } catch (err) {
-            console.log("> input non salvato correttamente", err);
+            console.log("> URL non valido", err);
         }
     }
 }
