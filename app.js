@@ -1,10 +1,10 @@
 const ytdl = require("ytdl-core");
 const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
-const cInput = require("./simo_modules/c-input");
+const input = require("./utils/input");
 
 
-cInput("YT Download Video - Inserisci l'URL")
+input("YT Download Video - Inserisci l'URL")
     .then((YTvideoURL) => {
         if (YTvideoURL.startsWith("https://www.youtube.com/watch")) {
             downloadVideo(YTvideoURL);
