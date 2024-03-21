@@ -1,9 +1,6 @@
-const checkDirs = require("../functions/checkDirs");
 const getInfos = require("../functions/getInfos");
 const download = require("../functions/download");
 const converToAudio = require("../functions/convertToAudio");
-
-checkDirs();
 
 getInfos()
 .then((res) => {
