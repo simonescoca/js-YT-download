@@ -1,5 +1,5 @@
-const _dirproj = require("../../utils/_dirproj");
 const ffmpeg = require("fluent-ffmpeg");
+const os = require("os");
 
 function convertToAudio(videopath) {
 
@@ -9,9 +9,9 @@ function convertToAudio(videopath) {
     console.log(`> conversione a file audio in corso...`);
  
     ffmpeg(videopath)
-    .output(`${_dirproj}/output/audio/${filename}.mp3`)
+    .output(`${os.homedir}/Downloads/${filename}.mp3`)
     .on("error", (err) => console.error("> errore durante la conversione a file.mp3", err))
-    .on("end", () => console.log(`> conversione completata!\n> trovi il tuo file.mp3 in ${_dirproj}/output/audio`))
+    .on("end", () => console.log(`> conversione completata!\n> trovi il tuo file.mp3 in ${os.homedir}/Downloads`))
     .run();
 }
 
