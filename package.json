@@ -12,6 +12,7 @@
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2",
     "input": "^1.0.1",
+    "progress": "^2.0.3",
     "ytdl-core": "^4.11.5"
   }
 }
