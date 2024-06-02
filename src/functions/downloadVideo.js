@@ -22,7 +22,7 @@ function downloadVideo(url, author, title) {
         let bar;
         videostream.on("response", (res) => {
             const totalSize = res.headers["content-length"];
-            bar = new progressBar("> download del video in corso... [:bar] :percent :etas", {
+            bar = new progressBar("> download del video in corso... :etas [:bar] :percent", {
                 width: 40,
                 complete: "=",
                 incomplete: " ",

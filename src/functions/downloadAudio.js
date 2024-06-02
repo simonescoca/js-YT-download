@@ -18,10 +18,20 @@ function downloadAudio(url, author, title) {
         quality: "highestaudio"
     });
 
+    ffmpeg(audiostream)
+        .audioBitrate(128)
+        .save(filepath)
+        .on("end", () => {
+            console.log(`> download di ${title}-${author}.mp3 completato :) trovi il file in ${os.homedir()}/Downloads`);
+        })
+        .on("error", (err) => {
+            console.error("> errore durante il download dell'audio", err);
+        });
+
     let bar;
     audiostream.on("response", (res) => {
         const totalSize = res.headers["content-length"];
-        bar = new progressBar("> download dell'audio in corso... [:bar] :percent :etas", {
+        bar = new progressBar("> download dell'audio in corso...  :etas [:bar] :percent", {
             width: 40,
             complete: "=",
             incomplete: " ",
@@ -33,16 +43,6 @@ function downloadAudio(url, author, title) {
     audiostream.on("data", (chunk) => {
         bar.tick(chunk.length);
     });
-
-    ffmpeg(audiostream)
-        .audioBitrate(128)
-        .save(filepath)
-        .on("end", () => {
-            console.log(`> download di ${title}-${author}.mp3 completato :) trovi il file in ${os.homedir()}/Downloads`);
-        })
-        .on("error", (err) => {
-            console.error("> errore durante il download dell'audio", err);
-        });
 }
 
 module.exports = downloadAudio;
