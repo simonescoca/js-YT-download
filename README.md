@@ -4,7 +4,8 @@
 Questo progetto permette di scaricare video da YouTube, oppure solo la parte audio di un video.
 
 ## Installazione
-Esegui `npm install` seguente per installare le dipendenze.
+Installare ffmpeg, eseguendo `brew install ffmpeg`.
+Esegui `npm i` seguente per installare le dipendenze.
 
 ## Utilizzo
 Nella directory del progetto eseguire `node src/main/app.js` per eseguire l'app.
