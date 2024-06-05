@@ -25,7 +25,17 @@ function downloadAudio(url, author, title) {
             console.log(`> download di ${title}-${author}.mp3 completato :) trovi il file in ${os.homedir()}/Downloads`);
         })
         .on("error", (err) => {
-            console.error("> errore durante il download dell'audio", err);
+            if(err.message === "Cannot find ffmpeg") {
+                console.log("> prima di procedere devi installare FFmpeg");
+                if(os.type() === "Darwin") {
+                    console.log("> stai usando macOS, installa Homebrew seguendo i passaggi sul sito ufficiale brew.sh/it");
+                    console.log("> se hai già installato Homebrew, apri il terminale ed esegui questo comando per installare FFmpeg: 'brew install ffmpeg', poi rilancia l'app");
+                } else if(os.type() === "Windows_NT") {
+                    console.log("> stai usando Windows, installa FFmpeg seguendo le indicazioni sul sito ufficiale ffmpeg.org, poi rilancia l'app");
+                }
+            } else {
+                console.error("> errore durante la conversione in audio", err.message);
+            }
         });
 
     let bar;

@@ -3,8 +3,11 @@
 ## Descrizione
 Questo progetto permette di scaricare video da YouTube, oppure solo la parte audio di un video.
 
+## Requisiti
+L'applicazione necessita di FFmpeg. Se non l'hai già installato, l'esecuzione dell'applicazione
+ti dirà quali sono i passaggi da fare per installare FFmpeg a seconda del tuo sistema operativo.
+
 ## Installazione
-Installare ffmpeg, eseguendo `brew install ffmpeg`.
 Esegui `npm i` seguente per installare le dipendenze.
 
 ## Utilizzo
